@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survey Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
     <style>
+        
     *{
         margin: 0;
         padding: 0;
@@ -12,6 +14,7 @@
         font-family: 'Poppins', sans-serif;
     }
 
+    
     body{
         display: flex;
         justify-content: center;
@@ -157,7 +160,52 @@
         background: #45f3ff;
         color: #0a171d;
     }
-    </style>
+
+    *{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    justify-content: center ;
+    align-items: center;
+    height: 46px;
+    padding: 0 10px;
+    float: left;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #45f3ff;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #45f3ff;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #45f3ff;
+}
+</style>
+
+    
 </head>
 <body>
     <div class="container">
@@ -252,9 +300,25 @@
             </div>
             
         </div>
+        <center>
+            <div class="rate">
+            <font color="#45f3ff">Rate our Map!</font>
+            <br>
+            <input type="radio" id="star5" name="rate" value="5" />
+            <label for="star5" title="text">5 stars</label>
+            <input type="radio" id="star4" name="rate" value="4" />
+            <label for="star4" title="text">4 stars</label>
+            <input type="radio" id="star3" name="rate" value="3" />
+            <label for="star3" title="text">3 stars</label>
+            <input type="radio" id="star2" name="rate" value="2" />
+            <label for="star2" title="text">2 stars</label>
+            <input type="radio" id="star1" name="rate" value="1" />
+            <label for="star1" title="text">1 star</label>
+          </div>
+        </center>
         <div class="row100">
             <div class="col">
-                <center><a href="index.html"><input type="submit" id="submit" onclick="submit()"></a></center>
+                <center><a href="ty.html"><input type="submit" id="submit" onclick="submit()"></a></center>
             </div>
         </div>
     </div>
@@ -273,6 +337,18 @@
         let nine = document.getElementById("q9").value
         let ten = document.getElementById("q10").value
         let eleven = document.getElementById("q11").value
+
+        let s1 = document.getElementById("star1").value
+        let s2 = document.getElementById("star2").value
+        let s3 = document.getElementById("star3").value
+        let s4 = document.getElementById("star4").value
+        let s5 = document.getElementById("star5").value
+
+        localStorage.setItem("rate", s1)
+        localStorage.setItem("rate", s2)
+        localStorage.setItem("rate", s3)
+        localStorage.setItem("rate", s4)
+        localStorage.setItem("rate", s5)
 
         localStorage.setItem("q1", one)
         localStorage.setItem("q2", two)
